@@ -35,8 +35,8 @@ s_words = set(wrk_s_words)
 
 
 wtk = WhitespaceTokenizer()
-train_file = "C:\\Users\\aaron\\Documents\\IST 664\\sentiment-analysis-on-movie-reviews\\train\\train.tsv"
-#test_file = "C:\\Users\\aaron\\Documents\\IST 664\\sentiment-analysis-on-movie-reviews\\test\\test.tsv"
+train_file = ""
+#test_file = ""
 train_df = pd.read_csv(train_file, delimiter='\t' )
 #test_df = pd.read_csv(test_file, delimiter='\t')
 
