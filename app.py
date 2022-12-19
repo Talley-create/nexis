@@ -1,8 +1,13 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__, template_folder='C:\\Users\\aaron\PycharmProjects\\regression\\template')
+app.config['SECRET_KEY'] = 'Talley'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+
+db = SQLAlchemy(app)
 
 
-app = Flask(__name__, template_folder='####################################')
-app.config['SECRET_KEY'] = '###############'
 from routes import *
 
 if __name__ == '__main__':
