@@ -4,6 +4,10 @@ from models import Task
 from datetime import datetime
 
 import forms
+import json
+import plotly
+import plotly.express as px
+import pandas as pd
 
 
 @app.route('/')
@@ -67,3 +71,21 @@ def delete(task_id):
     else:
         flash("Task not found")
     return redirect(url_for('index'))
+
+
+@app.route('/charts')
+def charts():
+    df = pd.DataFrame({
+        'observations':['f1','f2','f3','f4','f5'],
+        'values': [1,3,2,4,10],
+        'sites': ['site_1', 'site_2', 'site_1', 'site_3', 'site_4']
+    })
+    fig = px.bar(df, x='observations', y='values', color='sites',
+                 barmode='group')
+
+    description = 'The description goes here'
+    header = 'The header goes here'
+
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('charts.html', graphJSON=graphJSON, header=header, description=description)
+
